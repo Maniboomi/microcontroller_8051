@@ -1,4 +1,0 @@
-".\Objects\STARTUP.obj",
-".\Objects\PUSHBUTTON_01.obj" 
-TO ".\Objects\PUSHBUTTON_01" 
-PRINT(".\Listings\PUSHBUTTON_01.m51") RAMSIZE(256) 
