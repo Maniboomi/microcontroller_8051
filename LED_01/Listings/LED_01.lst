@@ -1,0 +1,45 @@
+A51 MACRO ASSEMBLER  LED_01                                                               04/08/2025 11:16:27 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\LED_01.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE LED_01.a51 SET(SMALL) DEBUG PRINT(.\Listings\LED_01.lst) OBJECT(.\Objec
+                      ts\LED_01.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H      ; Set origin to 0000H
+                       2     
+0000                   3     START: 
+0000 D290              4         SETB P1.0  ; Turn ON LED (P1.0 = 1)
+0002 110A              5         CALL DELAY ; Call delay function
+0004 C290              6         CLR P1.0   ; Turn OFF LED (P1.0 = 0)
+0006 110A              7         CALL DELAY ; Call delay function
+0008 80F6              8         SJMP START ; Repeat forever
+                       9     
+000A                  10     DELAY: 
+000A 7EFF             11         MOV R6, #255  ; Load R6 with 255
+000C 7FFF             12     D1: MOV R7, #255  ; Load R7 with 255
+000E DFFE             13     D2: DJNZ R7, D2   ; Decrement R7 until it reaches 0
+0010 DEFA             14         DJNZ R6, D1   ; Decrement R6 until it reaches 0
+0012 22               15         RET           ; Return from subroutine
+*** WARNING #A41 IN 15 (LED_01.a51, LINE 15): MISSING 'END' STATEMENT
+A51 MACRO ASSEMBLER  LED_01                                                               04/08/2025 11:16:27 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+D1 . . . . . . . .  C ADDR   000CH   A   
+D2 . . . . . . . .  C ADDR   000EH   A   
+DELAY. . . . . . .  C ADDR   000AH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  1 WARNING(S), 0 ERROR(S)
