@@ -1,0 +1,53 @@
+A51 MACRO ASSEMBLER  COUNTER_01                                                           04/08/2025 11:41:16 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\COUNTER_01.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE COUNTER_01.a51 SET(SMALL) DEBUG PRINT(.\Listings\COUNTER_01.lst) OBJECT
+                      (.\Objects\COUNTER_01.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+                       2             
+0000 758906            3     MOV TMOD,#06h     ; counter 0 MODE 2 8BIT auto reload mode
+                       4     
+0003 D2B3              5     SETB P3.3   ;T0 input pin
+                       6     
+0005 758A00            7     MOV TL0,#00H
+0008 758C00            8     MOV TH0,#00H
+                       9     
+000B D28C             10     HERE:SETB TR0   ;counter 0 on
+                      11     
+000D 858A90           12     BACK:MOV P1,TL0
+0010 308DFA           13     JNB TF0,BACK
+                      14     
+0013 C28C             15     CLR TR0
+0015 C28D             16     CLR TF0
+                      17     
+0017 80F2             18     SJMP HERE
+                      19     
+                      20     END
+A51 MACRO ASSEMBLER  COUNTER_01                                                           04/08/2025 11:41:16 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   000DH   A   
+HERE . . . . . . .  C ADDR   000BH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
