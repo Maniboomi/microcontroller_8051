@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\LCD_SCROLL.obj" 
+TO ".\Objects\LCD_SCROLL" 
+PRINT(".\Listings\LCD_SCROLL.m51") RAMSIZE(256) 

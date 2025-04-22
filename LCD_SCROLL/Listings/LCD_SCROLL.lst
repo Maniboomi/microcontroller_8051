@@ -1,0 +1,111 @@
+A51 MACRO ASSEMBLER  LCD_SCROLL                                                           04/22/2025 05:01:47 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\LCD_SCROLL.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE LCD_SCROLL.a51 SET(SMALL) DEBUG PRINT(.\Listings\LCD_SCROLL.lst) OBJECT
+                      (.\Objects\LCD_SCROLL.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+                       2     
+0000 75A000            3     MOV P2, #00H
+0003 75B000            4     MOV P3, #00H
+                       5     
+0006                   6     MAIN:
+0006 110F              7             CALL INIT_LCD
+0008 90005E            8             MOV DPTR , #MSG
+000B 1142              9             CALL DISPLAY
+                      10             
+000D                  11     HERE:
+000D 80FE             12             SJMP HERE
+                      13             
+000F                  14     INIT_LCD:
+000F 7438             15             MOV A, #38H
+0011 1124             16             ACALL LCD_CMD
+0013 740E             17             MOV A, #0EH
+0015 1124             18             ACALL LCD_CMD
+0017 7401             19             MOV A, #01H
+0019 1124             20             ACALL LCD_CMD
+001B 7406             21             MOV A, #06H
+001D 1124             22             ACALL LCD_CMD
+001F 7480             23             MOV A, #80H     
+0021 1124             24             ACALL LCD_CMD
+0023 22               25             RET
+                      26             
+0024                  27     LCD_CMD:
+0024 F5A0             28             MOV P2,A
+0026 C2B0             29             CLR P3.0
+0028 C2B1             30             CLR P3.1
+002A D2B2             31             SETB P3.2
+002C 1155             32             ACALL DELAY
+002E C2B2             33             CLR P3.2
+0030 1155             34             ACALL DELAY
+0032 22               35             RET
+                      36             
+0033                  37     LCD_DATA:
+0033 F5A0             38             MOV P2,A
+0035 D2B0             39             SETB P3.0
+0037 C2B1             40             CLR P3.1
+0039 D2B2             41             SETB P3.2
+003B 1155             42             ACALL DELAY
+003D C2B2             43             CLR P3.2
+003F 1155             44             ACALL DELAY
+0041 22               45             RET
+                      46             
+0042                  47     DISPLAY:
+0042 E4               48             CLR A
+0043 93               49             MOVC A,@A+DPTR
+0044 6005             50             JZ SCROLL
+0046 1133             51             ACALL LCD_DATA
+0048 A3               52             INC DPTR
+0049 80F7             53             SJMP DISPLAY
+                      54             
+004B                  55     SCROLL:
+004B 1155             56             ACALL DELAY
+004D 1124             57             ACALL LCD_CMD
+A51 MACRO ASSEMBLER  LCD_SCROLL                                                           04/22/2025 05:01:47 PAGE     2
+
+004F 741C             58             MOV A, #1CH
+0051 1124             59             ACALL LCD_CMD
+0053 80F6             60             SJMP SCROLL
+                      61             
+0055                  62     DELAY:
+0055 7DFF             63             MOV R5,#255
+0057 7EFF             64             D1: MOV R6, #255
+0059 DEFE             65             D2: DJNZ R6, D2
+005B DDFA             66             DJNZ R5, D1
+005D 22               67             RET
+                      68             
+005E 53494C49         69     MSG: DB 0x53, 0x49, 0x4C, 0x49, 0x43, 0x4F, 0x4E, 0  
+0062 434F4E00                
+                      70             
+                      71     END
+A51 MACRO ASSEMBLER  LCD_SCROLL                                                           04/22/2025 05:01:47 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+D1 . . . . . . . .  C ADDR   0057H   A   
+D2 . . . . . . . .  C ADDR   0059H   A   
+DELAY. . . . . . .  C ADDR   0055H   A   
+DISPLAY. . . . . .  C ADDR   0042H   A   
+HERE . . . . . . .  C ADDR   000DH   A   
+INIT_LCD . . . . .  C ADDR   000FH   A   
+LCD_CMD. . . . . .  C ADDR   0024H   A   
+LCD_DATA . . . . .  C ADDR   0033H   A   
+MAIN . . . . . . .  C ADDR   0006H   A   
+MSG. . . . . . . .  C ADDR   005EH   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+SCROLL . . . . . .  C ADDR   004BH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
