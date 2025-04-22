@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\DECIMAL_UPCOUNTER.obj" 
+TO ".\Objects\DECIMAL_UPCOUNTER" 
+PRINT(".\Listings\DECIMAL_UPCOUNTER.m51") RAMSIZE(256) 
