@@ -1,0 +1,42 @@
+A51 MACRO ASSEMBLER  ADD_16BITNUMBER                                                      04/12/2025 09:12:06 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ADD_16BITNUMBER.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ADD_16BITNUMBER.a51 SET(SMALL) DEBUG PRINT(.\Listings\ADD_16BITNUMBER.l
+                      st) OBJECT(.\Objects\ADD_16BITNUMBER.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+                       2             
+0000                   3             LOW_BYTE:
+0000 745F              4             MOV A, #5FH
+0002 24B4              5             ADD A, #0B4H
+0004 FF                6             MOV R7,A
+                       7             
+0005                   8             HIGH_BYTE:
+0005 742E              9             MOV A,#2EH
+0007 34A3             10             ADDC A,#0A3H
+0009 FE               11             MOV R6,A
+                      12             
+000A                  13             LOOP:
+000A 80FE             14             SJMP LOOP
+                      15             END
+A51 MACRO ASSEMBLER  ADD_16BITNUMBER                                                      04/12/2025 09:12:06 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HIGH_BYTE. . . . .  C ADDR   0005H   A   
+LOOP . . . . . . .  C ADDR   000AH   A   
+LOW_BYTE . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

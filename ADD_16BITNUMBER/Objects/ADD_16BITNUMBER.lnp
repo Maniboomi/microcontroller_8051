@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\ADD_16BITNUMBER.obj" 
+TO ".\Objects\ADD_16BITNUMBER" 
+PRINT(".\Listings\ADD_16BITNUMBER.m51") RAMSIZE(256) 
